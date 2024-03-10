@@ -8,7 +8,7 @@ export const Navbar = () => {
     const toggleDarkMode = () => setDarkMode(!isDarkMode);
     
     return (
-        <div className="w-full dark:bg-gray-900 flex flex-row h-24 p-4 justify-between">
+        <div className="w-full flex flex-row h-22 p-4 justify-between">
             <Fragment>
                 <p className="text-3xl text-white m-2 font-semibold">FUGAZZI</p>
                 <div className="h-[3.5rem] min-h-[1em] w-px self-stretch bg-gradient-to-tr 
