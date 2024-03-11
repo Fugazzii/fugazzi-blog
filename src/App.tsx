@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Page } from "./components/Page";
-import { Article } from "./components/Article";
 import Container from "./components/Container";
+// import { ArticlePreview } from "./components/Preview";
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
         {/* Page ID */}
         <Route path="/page/:id" element={<Container><Page /></Container>} />
         {/* Article title */}
-        <Route path="/:title" element={<Container><Article /></Container>} />
+        {/* <Route path="/:title" element={<Container><ArticlePreview /></Container>} /> */}
       </Routes>
     </BrowserRouter>
   );
