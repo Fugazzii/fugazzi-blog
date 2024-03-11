@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { Fragment } from "react/jsx-runtime";
+import { useSelector, useDispatch } from "react-redux";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { toggleThemeMode } from "../store/modules/theme-mode";
+import { Fragment } from "react/jsx-runtime";
 
 export const Navbar = () => {
-    const [isDarkMode, setDarkMode] = useState(false);
+    const dispatch = useDispatch();
+    const isDarkMode = useSelector((state: any) => state.themeMode.isDarkMode);
+    const handleDarkModeToggle = () => dispatch(toggleThemeMode());
 
-    const toggleDarkMode = () => setDarkMode(!isDarkMode);
-    
     return (
         <div className="w-full flex flex-row h-22 p-4 justify-between">
             <Fragment>
@@ -23,10 +24,10 @@ export const Navbar = () => {
                 className="mt-2"
                 size={36}
                 checked={isDarkMode}
-                onChange={toggleDarkMode}
+                onChange={handleDarkModeToggle}
                 sunColor="yellow"
                 moonColor="yellow"
             />
-    </div>
+        </div>
     );
-}
+};
