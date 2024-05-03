@@ -1,5 +1,5 @@
-import http from "http";
-import cors from "cors";
+const http = require("http");
+const cors = require("cors");
 
 const data = [
   {
@@ -30,4 +30,4 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(3000, () => console.log("Server is listening on 3000"));
+server.listen(8080, () => console.log("Server is listening on 3000"));

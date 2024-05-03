@@ -1,3 +1,4 @@
+"use client";
 import { useSelector, useDispatch } from "react-redux";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { toggleThemeMode } from "../store/modules/theme-mode";

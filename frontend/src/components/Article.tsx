@@ -1,3 +1,4 @@
+"use client";
 import { ArticleModel } from "../models/article";
 
 type Props = ArticleModel;

@@ -1,12 +1,13 @@
+"use client";
 import { FC } from "react";
-import { ArticlePreview } from "./Preview";
-import { useGetAllPreviewsQuery } from "../store/modules/previews/api";
+import { ArticlePreview } from "@/components/Preview";
+import { useGetAllPreviewsQuery } from "@/store/modules/previews/api";
 
 type Props = {
     id?: number
 };
 
-export const Page: FC<Props> = (_: Props) => {
+const Page: FC<Props> = (_: Props) => {
     const { data: previews, isLoading, error } = useGetAllPreviewsQuery("previewsApi");
 
     return (
@@ -17,3 +18,5 @@ export const Page: FC<Props> = (_: Props) => {
         </div>
     );
 };
+
+export default Page;

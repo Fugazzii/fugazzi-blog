@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import { ArticlePreviewModel } from "../models/preview";
 

@@ -8,7 +8,7 @@ type PreviewsResponse = {
 export const previewsApi = createApi({
     reducerPath: "previewsApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:3000"
+        baseUrl: "http://localhost:8080"
     }),
     endpoints: (builder) => ({
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
