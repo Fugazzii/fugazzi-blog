@@ -1,8 +1,6 @@
-import type { AWS } from '@serverless/typescript';
-
 import hello from '@functions/hello';
 
-const serverlessConfiguration: AWS = {
+const serverlessConfiguration = {
   service: 'backend',
   frameworkVersion: '3',
   plugins: ['serverless-esbuild'],
@@ -29,7 +27,7 @@ const serverlessConfiguration: AWS = {
       exclude: ['aws-sdk'],
       target: 'node14',
       define: { 'require.resolve': undefined },
-      platform: 'node',
+      platform: 'node', 
       concurrency: 10,
     },
   },
