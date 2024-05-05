@@ -3,13 +3,13 @@ import { ArticlePreviewModel } from "../../../models/preview";
 
 type PreviewState = {
     previews: ArticlePreviewModel[],
-    isLoading: boolean,
+    loading: boolean,
     error: string | null
 };
 
 const initialState: PreviewState = {
     previews: [],
-    isLoading: false,
+    loading: false,
     error: null
 };
 
@@ -18,15 +18,15 @@ const previewsSlice = createSlice({
     initialState,
     reducers: {
         previewsRequested: (state) => {
-            state.isLoading = true;
+            state.loading = true;
         },
         previewsReceived: (state, action) => {
             state.previews = action.payload;
-            state.isLoading = false;
+            state.loading = false;
             state.error = null;
         },
         previewsRequestFailed: (state, action) => {
-            state.isLoading = false;
+            state.loading = false;
             state.error = action.payload;
         }
     }

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { toggleThemeMode } from "../store/modules/theme-mode";
@@ -16,10 +17,10 @@ export const Navbar = () => {
                 <div className="h-[3.5rem] min-h-[1em] w-px self-stretch bg-gradient-to-tr 
                     from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400">
                 </div>
-                <a className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Home</a>
-                <a className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">About</a>
-                <a className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Discord</a>
-                <a className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Twitter</a>
+                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Home</Link>
+                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">About</Link>
+                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Discord</Link>
+                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Twitter</Link>
             </Fragment>
             <DarkModeSwitch
                 className="mt-2"

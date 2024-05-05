@@ -3,8 +3,15 @@ import { ArticleModel } from "../models/article";
 
 type Props = ArticleModel;
 
-export const Article = (props: Props) => {
+const Article = (props: Props | null) => {
+    
+    if(!props) {
+        return null;
+    }
+
     return (
         <>{props.author}</>
     );
 }
+
+export default Article;

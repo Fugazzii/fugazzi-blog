@@ -5,6 +5,10 @@ type PreviewsResponse = {
     data: ArticlePreviewModel[]
 };
 
+type PreviewResponse = {
+    data: ArticlePreviewModel
+};
+
 export const previewsApi = createApi({
     reducerPath: "previewsApi",
     baseQuery: fetchBaseQuery({
@@ -14,8 +18,12 @@ export const previewsApi = createApi({
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
             query: () => "/api/previews",
             transformResponse: (response: PreviewsResponse) => response.data
+        }),
+        getPreviewById: builder.query<ArticlePreviewModel, string>({
+            query: (id) => `/api/previews/${id}`,
+            transformResponse: (response: PreviewResponse) => response.data
         })
     })
 });
 
-export const { useGetAllPreviewsQuery } = previewsApi;
+export const { useGetAllPreviewsQuery, useGetPreviewByIdQuery } = previewsApi;

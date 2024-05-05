@@ -5,7 +5,7 @@ type ChildrenProps = Readonly<{children: React.ReactNode;}>;
 
 export default function RootLayout({ children }: ChildrenProps) {
     return (
-        <main>
+        <main className="flex flex-col justify-between items-center">
             <Navbar />
             {children}
             <Footer />
