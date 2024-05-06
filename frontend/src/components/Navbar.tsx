@@ -14,13 +14,13 @@ export const Navbar = () => {
         <div className="w-full flex flex-row h-22 p-4 justify-between">
             <Fragment>
                 <p className="text-3xl text-white m-2 font-semibold">FUGAZZI</p>
-                <div className="h-[3.5rem] min-h-[1em] w-px self-stretch bg-gradient-to-tr 
+                <div className="hidden md:block h-[3.5rem] min-h-[1em] w-px self-stretch bg-gradient-to-tr 
                     from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400">
                 </div>
-                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Home</Link>
-                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">About</Link>
-                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Discord</Link>
-                <Link className="leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Twitter</Link>
+                <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/home">Home</Link>
+                <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">About</Link>
+                <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Discord</Link>
+                <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Twitter</Link>
             </Fragment>
             <DarkModeSwitch
                 className="mt-2"

@@ -1,8 +1,6 @@
 "use client";
 import { ArticleModel } from "../models/article";
-import { renderToString } from "react-dom/server";
-import Md from "./Md";
-import Markdown from "react-markdown";
+import md from "markdown-it";
 
 type Props = ArticleModel;
 
@@ -13,7 +11,7 @@ const Article = (props: Props | null) => {
     }
 
     return (
-        <>
+        <div className="w-full flex flex-col items-center">
             <h1 className="text-white font-bold text-3xl mt-6 mb-2 text-center">{props.title}</h1>
             <strong className="text-gray-400 text-l">
                 {new Date(props.date).toDateString().slice(4)} 
@@ -23,8 +21,10 @@ const Article = (props: Props | null) => {
                 <span className="text-white text-xl">{props.author}</span>
             </strong>
             <img src={props.imgUrl} alt="Not Found" />
-            <Md content={props.content} />
-        </>
+            <div className="prose prose-invert p-10 max-w-[100%] md:scale-[110%] mb-10 md:mt-10" 
+                dangerouslySetInnerHTML={{ __html: md().render(props.content) }}
+            />
+        </div>
     );
 }
 

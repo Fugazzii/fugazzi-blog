@@ -11,7 +11,7 @@ export const Footer = () => {
                         <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">FUGAZZI</span>
                     </Link>
-                    <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">Copyright © 2024 
+                    <span className="block text-sm text-gray-500 text-center dark:text-gray-400">Copyright © 2024 
                 </span>
                 </div>
             </div>

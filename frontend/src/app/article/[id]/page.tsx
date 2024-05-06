@@ -18,7 +18,7 @@ export default function ArticlePage ({ params: { id } }: Props ) {
     }
 
     if(!preview) {
-        return <div>Article not found</div>;
+        return <Loading />;
     }
 
     return (
