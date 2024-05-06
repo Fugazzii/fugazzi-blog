@@ -2,14 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ArticlePreviewModel } from "../../../models/preview";
 import { ArticleModel } from "@/models/article";
 
-type PreviewsResponse = { 
-    data: ArticlePreviewModel[]
-};
-
-type ArticleByIdResponse = {
-    data: ArticleModel
-};
-
 export const previewsApi = createApi({
     reducerPath: "previewsApi",
     baseQuery: fetchBaseQuery({
@@ -17,12 +9,10 @@ export const previewsApi = createApi({
     }),
     endpoints: (builder) => ({
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
-            query: () => "/api/previews",
-            transformResponse: (response: PreviewsResponse) => response.data
+            query: () => "/api/previews"
         }),
         getArticleById: builder.query<ArticleModel, string>({
-            query: (id) => `/api/previews/${id}`,
-            transformResponse: (response: ArticleByIdResponse) => response.data
+            query: (id) => `/api/previews/${id}`
         })
     })
 });

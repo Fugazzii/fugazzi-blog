@@ -2,10 +2,11 @@
 import { ArticleModel } from "../models/article";
 import md from "markdown-it";
 
-type Props = ArticleModel;
+type Props = {
+    data: ArticleModel
+};
 
-const Article = (props: Props | null) => {
-    
+const Article = ({ data: props }: Props) => {
     if(!props) {
         return null;
     }
