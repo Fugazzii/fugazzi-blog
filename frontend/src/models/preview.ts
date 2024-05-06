@@ -1,4 +1,5 @@
 export type ArticlePreviewModel = {
+    id: number;
     title: string;
     date: string;
     readDuration: number;

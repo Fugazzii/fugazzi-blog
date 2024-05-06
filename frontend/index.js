@@ -1,5 +1,6 @@
 const http = require("http");
 const cors = require("cors");
+const { readFileSync } = require("fs");
 
 const data = [
   {
@@ -9,6 +10,9 @@ const data = [
     imgUrl: "https://nakamoto.com/content/images/size/w960/2020/01/introduction-to-cryptocurrency.png",
     author: "John Doe",
     description: "A brief description of the first preview.",
+    content: `# Content 1
+This is the content of the first preview.`,
+    links: ["https://example.com/1", "https://example.com/2"]
   },
   {
     title: "Dolor Sit Amet",
@@ -17,6 +21,8 @@ const data = [
     imgUrl: "https://nakamoto.com/content/images/size/w750/2020/01/what-are-the-key-properties-of-bitcoin.png",
     author: "Jane Smith",
     description: "A brief description of the second preview.",
+    content: readFileSync("README.md", "utf8").trim(),
+    links: ["https://example.com/3", "https://example.com/4"]
   }
 ];
 
@@ -26,29 +32,38 @@ const server = http.createServer((req, res) => {
     res.setHeader("Content-Type", "application/json");
 
     const urlParts = req.url.split("/");
-    const endpoint = urlParts[1]; // Get the endpoint (e.g., "api")
+    const endpoint = urlParts[1];
 
-    if (endpoint === "api") {
-        const resource = urlParts[2]; // Get the resource (e.g., "previews" or "preview")
-        
-        if (resource === "previews") {
-            if (urlParts.length === 4) { // Check if URL has the correct format "/api/previews/:id"
-                const id = Number(urlParts[3]); // Get the ID from the URL
-                if (!isNaN(id) && id >= 1 && id <= data.length) {
-                    return res.end(JSON.stringify({ data: data[id - 1] }));
-                } else {
-                    res.statusCode = 404; // Not Found
-                    return res.end(JSON.stringify({ error: "Preview not found" }));
-                }
+    if(endpoint !== "api") {
+        res.statusCode = 404;
+        return res.end(JSON.stringify({ error: "Endpoint not found" }));
+    }
+    const resource = urlParts[2];
+    
+    if (resource === "previews") {
+        if (urlParts.length === 4) {
+            const id = Number(urlParts[3]);
+            if (!isNaN(id) && id >= 1 && id <= data.length) {
+                return res.end(JSON.stringify({ data: data[id - 1] }));
             } else {
-                return res.end(JSON.stringify({ data }));
+                res.statusCode = 404;
+                return res.end(JSON.stringify({ error: "Preview not found" }));
             }
+        } else {
+            return res.end(JSON.stringify({
+                data: data.map((item, index) => ({
+                    id: index + 1,
+                    title: item.title,
+                    date: item.date,
+                    readDuration: item.readDuration,
+                    imgUrl: item.imgUrl,
+                }))
+            }));
         }
     }
 
-    // If URL doesn't match any of the above cases
-    res.statusCode = 404; // Not Found
-    return res.end(JSON.stringify({ error: "Endpoint not found" }));
+    res.statusCode = 404;
+    return res.end(JSON.stringify({ error: "Resource not found" }));
 });
 
 server.listen(8080, () => console.log("Server is listening on 8080"));

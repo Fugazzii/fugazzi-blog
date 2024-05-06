@@ -1,7 +1,7 @@
 "use client";
 import Loading from "@/app/home/loading";
 import Article from "@/components/Article";
-import { useGetPreviewByIdQuery } from "@/store/modules/previews/api";
+import { useGetArticleByIdQuery } from "@/store/modules/previews/api";
 
 type Props = {
     params: {
@@ -11,8 +11,8 @@ type Props = {
 }
 
 export default function ArticlePage ({ params: { id } }: Props ) {
-    const { isLoading, data: preview } = useGetPreviewByIdQuery(id);
-    console.log(preview);   
+    const { isLoading, data: preview } = useGetArticleByIdQuery(id);
+
     if(isLoading) {
         <Loading />;
     }
@@ -20,13 +20,8 @@ export default function ArticlePage ({ params: { id } }: Props ) {
     if(!preview) {
         return <div>Article not found</div>;
     }
-    const p = {
-        ...preview,
-        content: "",
-        links: [""]
-    };
 
     return (
-        <Article {...p} />
+        <Article {...preview} />
     );
 }

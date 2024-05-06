@@ -1,6 +1,7 @@
 "use client";
 import { FC } from "react";
 import { ArticlePreviewModel } from "../models/preview";
+import Link from "next/link";
 
 type Props = ArticlePreviewModel;
 
@@ -20,7 +21,7 @@ export const ArticlePreview: FC<Props> = (props: Props) => {
                 </p>
                 <p className="text-white mt-2 text-zinc-300 text-base">{props.description}</p>
                 <hr className="w-full h-[2px] mt-4 mb-4 bg-gray-100 border-0 rounded dark:bg-gray-700" />
-                <p className="text-white font-bold text-xl cursor-pointer   ">Read Now</p>
+                <Link href={`http://localhost:3000/article/${props.id}`} className="text-white font-bold text-xl cursor-pointer">Read Now</Link>
             </div>
         </div>
     );
