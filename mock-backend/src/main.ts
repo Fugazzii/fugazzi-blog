@@ -2,7 +2,6 @@ import express from "express";
 import { prepare } from "./application/routes";
 
 const app = express();
-
 prepare(app)
     .then(() => console.log("Application is ready"))
     .catch((error) => console.error("Failed to prepare application", error));
