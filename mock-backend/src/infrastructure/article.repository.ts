@@ -1,7 +1,5 @@
-import { Article } from "../core/article";
-import { IArticleRepository, PaginationOpts } from "../core/article.repository";
+import { Article, IArticleRepository, PaginationOpts } from "@core";
 import { ArticleModel } from "./article.model";
-import { getMongo } from "./mongo-connection";
 
 export class ArticleRepository implements IArticleRepository{
 

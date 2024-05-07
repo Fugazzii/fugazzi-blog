@@ -1,5 +1,5 @@
-import { Schema, Types, model } from "mongoose";
-import { Article } from "../core/article";
+import { Article } from "@core";
+import { Schema, model } from "mongoose";
 
 const ArticleSchema = new Schema<Article>({
     title: { type: String, required: true },
@@ -9,7 +9,7 @@ const ArticleSchema = new Schema<Article>({
     authorProfileImgUrl: { type: String, required: true },
     description: { type: String, required: true },
     content: { type: String, required: true },
-    links: { type: Types.Array<String>, required: true },
+    links: { type: [String], required: true },
     createdAt: { type: Date, default: new Date() }
 });
 

@@ -9,10 +9,12 @@ export const previewsApi = createApi({
     }),
     endpoints: (builder) => ({
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
-            query: () => "/api/previews"
+            query: () => "/api/previews",
+            transformResponse: (response: { data: ArticlePreviewModel[] }) => response.data
         }),
         getArticleById: builder.query<ArticleModel, string>({
-            query: (id) => `/api/previews/${id}`
+            query: (id) => `/api/previews/${id}`,
+            transformResponse: (response: { data: ArticleModel }) => response.data
         })
     })
 });

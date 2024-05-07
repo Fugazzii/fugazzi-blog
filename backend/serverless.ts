@@ -6,7 +6,7 @@ const serverlessConfiguration = {
   plugins: ['serverless-esbuild'],
   provider: {
     name: 'aws',
-    runtime: 'nodejs14.x',
+    runtime: 'nodejs20.x',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,

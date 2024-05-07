@@ -15,6 +15,10 @@ const Page: FC<Props> = (_: Props) => {
         return <Loading />;
     }
 
+    if(!!error) {
+        return <p>Failed to retrieve</p>;
+    }
+
     return (
         <div className="w-full flex flex-col justify-center items-center">
             {error && <p>Error</p>}

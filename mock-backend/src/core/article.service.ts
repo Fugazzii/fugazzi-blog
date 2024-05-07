@@ -1,5 +1,5 @@
 import { Article } from "./article";
-import { IArticleRepository, PaginationOpts } from "./article.repository";
+import { IArticleRepository, PaginationOpts } from "./article.repository.interface";
 
 export class ArticleService {
     public constructor(private readonly articleRepository: IArticleRepository) {
