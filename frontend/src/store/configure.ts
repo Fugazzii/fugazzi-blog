@@ -1,15 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { themeModeReducer } from "./modules/theme-mode";
-import { previewsApi } from "./modules/previews/api";
-import { previewsReducer } from "./modules/previews/slice";
+import { articlesApi } from "./modules/articles/api";
+import { userApi } from "./modules/user/api";
 
 export const makeStore = () => configureStore({
     reducer: {
         themeMode: themeModeReducer,
-        previews: previewsReducer,
-        [previewsApi.reducerPath]: previewsApi.reducer
+        articles: articlesApi.reducer,
+        user: userApi.reducer,
+        [articlesApi.reducerPath]: articlesApi.reducer,
+        [userApi.reducerPath]: userApi.reducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(previewsApi.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+        .concat(articlesApi.middleware)
+        .concat(userApi.middleware)
 });
 
 export type AppStore = ReturnType<typeof makeStore>;

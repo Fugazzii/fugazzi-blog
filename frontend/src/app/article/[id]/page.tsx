@@ -1,7 +1,7 @@
 "use client";
 import Loading from "@/app/home/loading";
 import Article from "@/components/Article";
-import { useGetArticleByIdQuery } from "@/store/modules/previews/api";
+import { useGetArticleByIdQuery } from "@/store/modules/articles/api";
 
 type Props = {
     params: {
@@ -18,7 +18,7 @@ export default function ArticlePage ({ params: { id } }: Props ) {
     }
 
     if(!preview) {
-        return <Loading />;
+        return <>Article Not found</>;
     }
 
     return (

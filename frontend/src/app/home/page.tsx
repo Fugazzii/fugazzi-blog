@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import { ArticlePreview } from "@/components/Preview";
-import { useGetAllPreviewsQuery } from "@/store/modules/previews/api";
+import { useGetAllPreviewsQuery } from "@/store/modules/articles/api";
 import Loading from "./loading";
 
 type Props = {
