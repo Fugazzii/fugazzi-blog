@@ -24,7 +24,7 @@ const GetPreviews = async (req: Request, res: Response) => {
     }
 }
 
-const GetPreview = async (req: Request, res: Response) => {
+const GetArticleById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const preview = await articleService.getById(id);
@@ -43,7 +43,7 @@ const GetPreview = async (req: Request, res: Response) => {
     }
 }
 
-const CreatePreview = async (req: Request, res: Response) => {
+const PostArticle = async (req: Request, res: Response) => {
     try {
         const preview = await articleService.post(req.body);
         
@@ -61,7 +61,7 @@ const CreatePreview = async (req: Request, res: Response) => {
     }
 }
 
-const DeletePreview = async (req: Request, res: Response) => {
+const DeleteArticle = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         await articleService.delete(id);
@@ -79,4 +79,20 @@ const DeletePreview = async (req: Request, res: Response) => {
     }
 }
 
-export { GetPreviews, GetPreview, CreatePreview, DeletePreview };
+const GetUserInfo = (req: Request, res: Response) => {
+    try {
+        res.json({
+            success: true,
+            message: "User info fetched successfully",
+            data: req.oidc.user
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: "Failed to get user info",
+            error: error.message
+        });
+    }
+}
+
+export { GetPreviews, GetArticleById, PostArticle, DeleteArticle, GetUserInfo };

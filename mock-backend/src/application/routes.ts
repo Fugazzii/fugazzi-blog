@@ -1,6 +1,6 @@
 import express, { Express } from "express";
 import cors from "cors";
-import { CreatePreview, DeletePreview, GetPreview, GetPreviews } from "./article.controller";
+import { PostArticle, DeleteArticle, GetPreviews, GetUserInfo, GetArticleById } from "./article.controller";
 import { connectToMongo } from "src/infrastructure/mongo-connection";
 import { authMiddleware, verifyAuth } from "./auth.middleware";
 
@@ -18,7 +18,8 @@ const setupMiddlewares = (app: Express) => {
 
 const setupRoutes = (app: Express) => {
     app.get("/api/previews", GetPreviews);
-    app.get("/api/previews/:id", GetPreview);
-    app.post("/api/preview", verifyAuth, CreatePreview);
-    app.delete("/api/previews/:id", DeletePreview);
+    app.get("/api/article/:id", GetArticleById);
+    app.post("/api/article", verifyAuth, PostArticle);
+    app.delete("/api/article/:id", DeleteArticle);
+    app.get("/api/user", GetUserInfo);
 }
