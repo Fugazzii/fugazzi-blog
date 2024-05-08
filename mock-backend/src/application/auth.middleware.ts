@@ -8,11 +8,7 @@ const config: ConfigParams = {
     baseURL: "http://localhost:8080",
     clientID: "VihID3upBOkQIpuNqmWqmpTfjRwYSyB8",
     issuerBaseURL: "https://dev-6bi988f9.us.auth0.com",
-    routes: {
-        callback: "/callback",
-        login: "/login",
-        logout: "/logout"
-    }
+    idpLogout: true
 };
 
 export const authMiddleware = auth(config);

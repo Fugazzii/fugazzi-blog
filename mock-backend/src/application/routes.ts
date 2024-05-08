@@ -21,5 +21,8 @@ const setupRoutes = (app: Express) => {
     app.get("/api/article/:id", GetArticleById);
     app.post("/api/article", verifyAuth, PostArticle);
     app.delete("/api/article/:id", DeleteArticle);
+    
     app.get("/api/user", GetUserInfo);
+    app.get("api/login", (req, res) => {});
+    app.get("api/logout", (req, res) => {});
 }

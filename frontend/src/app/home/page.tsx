@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Page: FC<Props> = (_: Props) => {
-    const { data: previews, error, isLoading } = useGetAllPreviewsQuery("previewsApi");
+    const { data: previews, error, isLoading } = useGetAllPreviewsQuery("articlesApi");
 
     if(isLoading) {
         return <Loading />;

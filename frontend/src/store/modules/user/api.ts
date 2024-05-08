@@ -10,7 +10,6 @@ export const userApi = createApi({
         getUser: builder.query<UserModel, void>({
             query: () => "/api/user",
             transformResponse: (response: { data: UserModel }) => {
-                console.log(response);
                 return response.data;
             }
         })
