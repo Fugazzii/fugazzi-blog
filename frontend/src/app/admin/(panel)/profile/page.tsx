@@ -1,8 +1,8 @@
 "use client";
+import AuthButton from "@/components/AuthButton";
 import { userApi } from "@/store/modules/api/user";
-import AuthButton from "./AuthButton";
 
-const Profile = () => {
+const ProfileTab = () => {
     const { data: user } = userApi.endpoints.getUser.useQuery();
 
     if(!user) {
@@ -10,7 +10,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center">
+        <>
             <div className="text-center my-4">
                 <img className="h-32 w-32 rounded-full border-4 border-white mx-auto my-4"
                     src={user.picture} alt="Not Found" />
@@ -31,8 +31,8 @@ const Profile = () => {
                 </button>
                 <AuthButton variant="logout" user={user} />
             </div>
-        </div>
+        </>
     );
 }
 
-export default Profile;
+export default ProfileTab;
