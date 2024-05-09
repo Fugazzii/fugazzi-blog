@@ -18,8 +18,8 @@ export default function RootLayout({ children }: ChildrenProps) {
     return (
         <StoreProvider>
             <html lang="en">
-                <body className={inter.className}>
-                    <main className="flex flex-col justify-between items-center">
+                <body className={`${inter.className} bg-gray-900`}>
+                    <main className="w-full min-h-screen flex flex-col justify-between items-center">
                         <Navbar />
                         {children}
                         <Footer />

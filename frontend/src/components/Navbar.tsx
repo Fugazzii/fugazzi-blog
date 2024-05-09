@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { toggleThemeMode } from "../store/modules/theme-mode";
+import { toggleThemeMode } from "../store/modules/slices/theme-mode";
 import { Fragment } from "react/jsx-runtime";
 
 export const Navbar = () => {
@@ -11,7 +11,7 @@ export const Navbar = () => {
     const handleDarkModeToggle = () => dispatch(toggleThemeMode());
 
     return (
-        <div className="w-full flex flex-row h-22 p-4 justify-between">
+        <div className="w-full flex flex-row h-22 p-4 justify-between dark:bg-gray-950">
             <Fragment>
                 <p className="text-3xl text-white m-2 font-semibold">FUGAZZI</p>
                 <div className="hidden md:block h-[3.5rem] min-h-[1em] w-px self-stretch bg-gradient-to-tr 

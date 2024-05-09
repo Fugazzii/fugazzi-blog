@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { themeModeReducer } from "./modules/theme-mode";
-import { articlesApi } from "./modules/articles/api";
-import { userApi } from "./modules/user/api";
+import { themeModeReducer } from "./modules/slices/theme-mode";
+import { articlesApi } from "./modules/api/articles";
+import { userApi } from "./modules/api/user";
 
-export const makeStore = () => configureStore({
+export const store = configureStore({
     reducer: {
         themeMode: themeModeReducer,
         articles: articlesApi.reducer,
@@ -15,5 +15,3 @@ export const makeStore = () => configureStore({
         .concat(articlesApi.middleware)
         .concat(userApi.middleware)
 });
-
-export type AppStore = ReturnType<typeof makeStore>;
