@@ -24,8 +24,19 @@ export const articlesApi = createApi({
                 response.data.id = response.data._id;
                 return response.data;
             }
+        }),
+        createArticle: builder.mutation<ArticleModel, string>({
+            query: (data) => ({
+                url: "/api/article",
+                method: "POST",
+                body: data
+            }),
+            transformResponse: (response: { data: ArticleModel }) => {
+                response.data.id = response.data._id;
+                return response.data;
+            }
         })
     })
 });
 
-export const { useGetAllPreviewsQuery, useGetArticleByIdQuery } = articlesApi;
+export const { useGetAllPreviewsQuery, useGetArticleByIdQuery, useCreateArticleMutation } = articlesApi;
