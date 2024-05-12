@@ -98,6 +98,10 @@ const DeleteAll = async (req: Request, res: Response) => {
 
 const GetUserInfo = (req: Request, res: Response) => {
     try {
+        if(!req.oidc.user) {
+            throw new Error("Unauthenticated");
+        }
+
         res.json({
             success: true,
             message: "User info fetched successfully",
