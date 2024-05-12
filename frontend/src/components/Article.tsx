@@ -11,16 +11,16 @@ const Article = (props: Props) => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <h1 className="text-white font-bold text-3xl mt-6 mb-2 text-center">{props.title}</h1>
+            <h1 className="text-white font-bold text-3xl mt-10 text-center">{props.title}</h1>
             <strong className="text-gray-400 text-l">
-                {new Date(props.date).toDateString().slice(4)} 
+                {props.createdAt} 
                 &nbsp;&nbsp;&middot;&nbsp;&nbsp;
                 {props.readDuration} min read 
                 &nbsp;&nbsp;&middot;&nbsp;&nbsp;
                 <span className="text-white text-xl">{props.author}</span>
             </strong>
-            <img src={props.imgUrl} alt="Not Found" />
-            <div className="prose prose-invert p-10 max-w-[100%] md:scale-[110%] mb-10 md:mt-10" 
+            <img src={props.imgUrl} alt="Not Found" className="scale-[90%]"/>
+            <div className="prose prose-invert p-10 max-w-[100%] md:scale-[120%] mb-20 md:mt-10" 
                 dangerouslySetInnerHTML={{ __html: md().render(props.content) }}
             />
         </div>

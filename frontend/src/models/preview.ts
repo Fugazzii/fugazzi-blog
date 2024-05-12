@@ -1,11 +1,12 @@
 export type ArticlePreviewModel = {
-    _id: string;
-    id: string;
+    _id?: string;
+    id?: string;
     title: string;
-    date: Date;
+    createdAt: string;
     readDuration: number;
     imgUrl: string;
     author: string;
     authorProfileImgUrl: string;
+    content: string;
     description: string;
 };

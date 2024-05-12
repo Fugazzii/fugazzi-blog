@@ -2,10 +2,14 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ArticlePreviewModel } from "../../../models/preview";
 import { ArticleModel } from "@/models/article";
 
+const formatDate = (date: string) => new Date(date).toLocaleDateString().replaceAll("/", "-");
+
 export const articlesApi = createApi({
     reducerPath: "articlesApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:8080"
+        baseUrl: "http://localhost:8080",
+        prepareHeaders: (headers) => headers,
+        credentials: "include"
     }),
     endpoints: (builder) => ({
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
@@ -13,6 +17,7 @@ export const articlesApi = createApi({
             transformResponse: (response: { data: ArticlePreviewModel[] }) => {
                 response.data = response.data.map(art => ({
                     ...art,
+                    createdAt: formatDate(art.createdAt as string),
                     id: art._id
                 }));
                 return response.data;
@@ -21,20 +26,21 @@ export const articlesApi = createApi({
         getArticleById: builder.query<ArticleModel, string>({
             query: (id) => `/api/article/${id}`,
             transformResponse: (response: { data: ArticleModel }) => {
-                response.data.id = response.data._id;
+                response.data = {
+                    ...response.data,
+                    createdAt: formatDate(response.data.createdAt as string),
+                    id: response.data._id
+                };
                 return response.data;
             }
         }),
-        createArticle: builder.mutation<ArticleModel, string>({
-            query: (data) => ({
-                url: "/api/article",
-                method: "POST",
-                body: data
+        createArticle: builder.mutation<ArticleModel, ArticleModel>({
+            query: (data: ArticleModel) => ({
+                    url: "/api/article",
+                    method: "POST",
+                    body: data    
             }),
-            transformResponse: (response: { data: ArticleModel }) => {
-                response.data.id = response.data._id;
-                return response.data;
-            }
+            transformResponse: (response: { data: ArticleModel }) => response.data
         })
     })
 });

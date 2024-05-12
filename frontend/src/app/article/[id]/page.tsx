@@ -1,7 +1,7 @@
 "use client";
 import Loading from "@/app/home/loading";
 import Article from "@/components/Article";
-import { useGetArticleByIdQuery } from "@/store/modules/articles/api";
+import { useGetArticleByIdQuery } from "@/store/modules/api/articles";
 
 type Props = {
     params: {
