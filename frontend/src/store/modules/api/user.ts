@@ -9,20 +9,26 @@ type UserPayload = {
         family_name: string;
         picture: string;
         email: string;    
-    }
+    },
+    success: boolean,
+    message: string
 }
 
 export const userApi = createApi({
     reducerPath: "userApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:8080",
+        baseUrl: process.env.SERVER_URL,
         prepareHeaders: (headers) => headers,
         credentials: "include"
     }),
     endpoints: (builder) => ({
-        getUser: builder.query<UserModel, void>({
+        getUser: builder.query<UserModel | null, void>({
             query: () => "/api/user",
-            transformResponse: (response: UserPayload) => {
+            transformResponse: (response: UserPayload): UserModel | null => {
+                if (!response.success) {
+                    return null;
+                }
+
                 return {
                     sid: response.data.sid,
                     nickname: response.data.nickname,

@@ -1,5 +1,7 @@
 "use client";
+import { userApi } from "@/store/modules/api/user";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 
 type TabLinkProps = {
@@ -66,6 +68,15 @@ type Props = {
 }
 
 const PanelLayout = ({ children }: Props) => {
+    const { data: user } = userApi.endpoints.getUser.useQuery();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!user) {
+            router.push("/admin");
+        }
+    }, [user, router]);
+
     return (
         <div className="w-full h-full bg-gray-950 p-4 flex flex-col justify-around items-center">
             <Tabs />

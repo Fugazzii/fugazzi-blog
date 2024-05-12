@@ -7,7 +7,7 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString().replace
 export const articlesApi = createApi({
     reducerPath: "articlesApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:8080",
+        baseUrl: process.env.SERVER_URL,
         prepareHeaders: (headers) => headers,
         credentials: "include"
     }),

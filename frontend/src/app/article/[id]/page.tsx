@@ -1,7 +1,7 @@
 "use client";
 import Loading from "@/app/home/loading";
-import Article from "@/components/Article";
 import { useGetArticleByIdQuery } from "@/store/modules/api/articles";
+import md from "markdown-it";
 
 type Props = {
     params: {
@@ -22,6 +22,19 @@ export default function ArticlePage ({ params: { id } }: Props ) {
     }
 
     return (
-        <Article {...preview} />
+        <div className="w-full flex flex-col items-center">
+            <h1 className="text-white font-bold text-3xl mt-10 text-center">{preview.title}</h1>
+            <strong className="text-gray-400 text-l">
+                {preview.createdAt} 
+                &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+                {preview.readDuration} min read 
+                &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+                <span className="text-white text-xl">{preview.author}</span>
+            </strong>
+            <img src={preview.imgUrl} alt="Not Found" className="scale-[90%]"/>
+            <div className="prose prose-invert p-10 max-w-[100%] md:scale-[120%] mb-20 md:mt-10" 
+                dangerouslySetInnerHTML={{ __html: md().render(preview.content) }}
+            />
+        </div>
     );
 }

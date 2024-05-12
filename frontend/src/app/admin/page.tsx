@@ -2,25 +2,27 @@
 import AuthButton from "@/components/AuthButton";
 import { useGetUserQuery } from "@/store/modules/api/user";
 import { useRouter } from "next/navigation";
+import Loading from "../home/loading";
+import { useEffect } from "react";
 
 const AdminPage = () => {
     const { data, isLoading } = useGetUserQuery();
     const router = useRouter();
 
     if(isLoading) {
-        return <div>Fetching user data...</div>;
+        return <Loading />;
     }
 
-    if(!!data) {
+    useEffect(() => {
         router.push("/admin/profile");
-    }
+    }, [data, router]);
 
-    return !data ? (
-        <div className="w-full h-[70vh]">
-            <h1 className="text-white text-3xl">Please login</h1>
+    return (
+        <div className="w-full h-[70vh] flex flex-col justify-center items-center">
+            <h1 className="text-white text-3xl m-10">Please login</h1>
             <AuthButton variant="login" />
         </div>
-    ) : false;
+    );
 }
 
 export default AdminPage;
