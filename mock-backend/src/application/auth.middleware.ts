@@ -14,7 +14,7 @@ const config: ConfigParams = {
 export const authMiddleware = auth(config);
 
 export const verifyAuth = (req: Request, res: Response, next: NextFunction) => {
-    if (req.oidc.isAuthenticated()) {
+    if (req.oidc.isAuthenticated() && req.oidc.user.email === "sichinavailia@gmail.com") {
         return next();
     } else {
         return res.status(401).send("Unauthorized");

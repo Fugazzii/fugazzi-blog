@@ -25,4 +25,8 @@ export class ArticleService {
     public getAll(opts: PaginationOpts) {
         return this.articleRepository.findAll(opts);
     }
+
+    public deleteAll() {
+        return this.articleRepository.deleteAll();
+    }
 }

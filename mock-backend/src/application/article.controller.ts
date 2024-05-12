@@ -79,6 +79,23 @@ const DeleteArticle = async (req: Request, res: Response) => {
     }
 }
 
+const DeleteAll = async (req: Request, res: Response) => {
+    try {
+        await articleService.deleteAll();
+        
+        res.json({
+            success: true,
+            message: "Previews deleted successfully"
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: "Failed to delete previews",
+            error: error.message
+        });
+    }
+}
+
 const GetUserInfo = (req: Request, res: Response) => {
     try {
         res.json({
@@ -95,4 +112,11 @@ const GetUserInfo = (req: Request, res: Response) => {
     }
 }
 
-export { GetPreviews, GetArticleById, PostArticle, DeleteArticle, GetUserInfo };
+export { 
+    GetPreviews,
+    GetArticleById,
+    PostArticle, 
+    DeleteArticle, 
+    GetUserInfo, 
+    DeleteAll
+};

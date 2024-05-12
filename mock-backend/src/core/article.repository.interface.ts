@@ -11,4 +11,5 @@ export interface IArticleRepository {
     delete(id: string): Promise<void>;
     findOne(id: string): Promise<Article | null>;
     findAll(opts: PaginationOpts): Promise<Article[]>;
+    deleteAll(): Promise<void>;
 }

@@ -1,6 +1,6 @@
 import express, { Express } from "express";
 import cors from "cors";
-import { PostArticle, DeleteArticle, GetPreviews, GetUserInfo, GetArticleById } from "./article.controller";
+import { PostArticle, DeleteArticle, GetPreviews, GetUserInfo, GetArticleById, DeleteAll } from "./article.controller";
 import { connectToMongo } from "src/infrastructure/mongo-connection";
 import { authMiddleware, verifyAuth } from "./auth.middleware";
 
@@ -23,6 +23,7 @@ const setupRoutes = (app: Express) => {
     app.get("/api/previews", GetPreviews);
     app.get("/api/article/:id", GetArticleById);
     app.post("/api/article", verifyAuth, PostArticle);
+    app.delete("/api/articles", verifyAuth, DeleteAll);
     app.delete("/api/article/:id", DeleteArticle);    
     app.get("/api/user", GetUserInfo);
 }

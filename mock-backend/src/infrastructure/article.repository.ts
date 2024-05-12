@@ -20,9 +20,18 @@ export class ArticleRepository implements IArticleRepository{
     public delete(id: string): Promise<void> {
         return this.articlesRepository.findByIdAndDelete(id);
     }
+
+    public deleteAll(): Promise<void> {
+        return new Promise(resolve => {
+            this.articlesRepository.deleteMany({});
+            resolve();
+        });
+    }
+
     public findOne(id: string): Promise<Article> {
         return this.articlesRepository.findById(id);
     }
+
     public findAll(opts: PaginationOpts): Promise<Article[]> {
         return this.articlesRepository.find().skip(opts.offset).limit(opts.limit);
     }
