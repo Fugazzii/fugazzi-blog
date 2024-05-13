@@ -43,7 +43,7 @@ const DashboardPage = () => {
             <strong className="text-white text-3xl">Upload an Article</strong>
             <Input label="Title" placeholder="Enter title" onChangeFunc={e => setTitle(e.target.value)} />
             <Textarea label="Description" placeholder="Add small description" onChangeFunc={e => setDescription(e.target.value)}/>
-            <MdEditor label="Content" placeholder="Paste content here" onChangeFunc={setContent}/>
+            <MdEditor label="Content" onChangeFunc={setContent}/>
             <button type="submit" className="text-white font-bold py-4 px-8 rounded text-xl bg-blue-800 hover:bg-blue-900">Post</button>
         </form>
     );

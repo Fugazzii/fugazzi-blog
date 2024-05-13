@@ -13,7 +13,7 @@ const GetPreviews: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (ev
     try {
         const data = await articleService.getAll({
             limit: event.body.limit,
-            offset: event.body.page
+            offset: (event.body.page - 1) * event.body.limit
         });
 
         return formatJSONResponse({

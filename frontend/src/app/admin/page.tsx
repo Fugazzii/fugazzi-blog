@@ -9,13 +9,15 @@ const AdminPage = () => {
     const { data, isLoading } = useGetUserQuery();
     const router = useRouter();
 
+    useEffect(() => {
+        if(!!data) {
+            router.push("/admin/profile");
+        }
+    }, [data, router]);
+
     if(isLoading) {
         return <Loading />;
     }
-
-    useEffect(() => {
-        router.push("/admin/profile");
-    }, [data, router]);
 
     return (
         <div className="w-full h-[70vh] flex flex-col justify-center items-center">
