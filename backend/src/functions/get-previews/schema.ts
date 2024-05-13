@@ -6,4 +6,3 @@ export default {
     },
     required: ["limit", "page"]
 } as const;
-  

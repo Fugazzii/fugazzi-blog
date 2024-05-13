@@ -1,5 +1,5 @@
-import hello from "@functions/hello";
-import previews from "@functions/previews";
+import GetPreviews from "@functions/get-previews";
+import { DeleteArticle, GetArticleById, PostArticle } from "@functions/index";
 
 const serverlessConfiguration = {
     service: "backend",
@@ -18,7 +18,12 @@ const serverlessConfiguration = {
         }
     },
     // import the function via paths
-    functions: { hello, previews },
+    functions: { 
+        GetPreviews,
+        GetArticleById,
+        PostArticle,
+        DeleteArticle
+    },
     package: { individually: true },
     custom: {
         esbuild: {
