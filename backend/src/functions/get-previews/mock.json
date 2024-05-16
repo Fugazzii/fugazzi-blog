@@ -2,5 +2,9 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "body": "{\"limit\": 5, \"page\": 1}"
+    "body": "{}",
+    "queryStringParameters": {
+        "limit": 5,
+        "page": 1
+    }
 }

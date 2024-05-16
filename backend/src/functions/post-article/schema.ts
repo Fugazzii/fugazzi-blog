@@ -9,7 +9,7 @@ export default {
         description: { type: "string" },
         content: { type: "string" },
         links: { type: "array", items: { type: "string" } },
-        createdAt: { type: "date" }
+        createdAt: { type: "string" }
     },
     required: ["title", "readDuration", "imgUrl", "author", "authorProfileImgUrl", "description", "content", "createdAt"]
 } as const;

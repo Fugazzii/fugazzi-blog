@@ -8,5 +8,5 @@ export class Article {
     description: string;
     content: string;
     links: string[];
-    createdAt: Date;
+    createdAt: Date | string;
 }

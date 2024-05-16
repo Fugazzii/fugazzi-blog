@@ -22,7 +22,7 @@ const PostArticle: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (ev
         return formatJSONResponse({
             message: "Failed to post an article",
             error: error.message
-        });
+        }, 404);
     }
 };
 

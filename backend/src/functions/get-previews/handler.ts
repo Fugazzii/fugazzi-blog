@@ -12,8 +12,8 @@ const GetPreviews: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (ev
         const articleRepository = new ArticleRepository();
         const articleService = new ArticleService(articleRepository);    
         const data = await articleService.getAll({
-            limit: event.body.limit,
-            offset: (event.body.page - 1) * event.body.limit
+            limit: +event.queryStringParameters.limit,
+            offset: (+event.queryStringParameters.page - 1) * +event.queryStringParameters.limit
         });
 
         return formatJSONResponse({

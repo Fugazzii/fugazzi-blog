@@ -9,7 +9,11 @@ export default {
             http: {
                 method: "delete",
                 path: "/article/{id}",
-                cors: true,
+                cors: {
+                    origin: '*',
+                    headers: ['Content-Type', 'Authorization'],
+                    allowCredentials: true
+                },
                 request: {
                     schemas: {
                         "application/json": schema,
