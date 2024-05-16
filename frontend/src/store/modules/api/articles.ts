@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ArticlePreviewModel } from "../../../models/preview";
 import { ArticleModel } from "@/models/article";
+import { getSession } from "@auth0/nextjs-auth0";
 
 const formatDate = (date: string) => new Date(date).toLocaleDateString().replaceAll("/", "-");
 
@@ -8,7 +9,13 @@ export const articlesApi = createApi({
     reducerPath: "articlesApi",
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.SERVER_URL,
-        prepareHeaders: (headers) => headers,
+        prepareHeaders: async (headers) => {
+            const session = await getSession();
+            if (session) {
+                headers.set("Authorization", `Bearer ${session.accessToken}`);
+            }
+            return headers;
+        },
         credentials: "include"
     }),
     endpoints: (builder) => ({

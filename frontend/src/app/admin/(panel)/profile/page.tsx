@@ -7,7 +7,7 @@ const ProfileTab = () => {
     const AuthButton = dynamic(() => import("@/components/AuthButton"), {
         ssr: false
     });
-
+    
     return user && (
         <>
             <div className="text-center my-4">
