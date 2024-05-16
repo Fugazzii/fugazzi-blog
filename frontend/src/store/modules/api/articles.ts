@@ -2,6 +2,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ArticlePreviewModel } from "../../../models/preview";
 import { ArticleModel } from "@/models/article";
 import { getSession } from "@auth0/nextjs-auth0";
+/* const session = await getSession();
+if (session) {
+    headers.set("Authorization", `Bearer ${session.accessToken}`);
+}
+return headers; */
+
 
 const formatDate = (date: string) => new Date(date).toLocaleDateString().replaceAll("/", "-");
 
@@ -9,18 +15,18 @@ export const articlesApi = createApi({
     reducerPath: "articlesApi",
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.SERVER_URL,
-        prepareHeaders: async (headers) => {
-            const session = await getSession();
-            if (session) {
-                headers.set("Authorization", `Bearer ${session.accessToken}`);
-            }
+        prepareHeaders: (headers) => {
+            headers.set("Content-Type", "application/json");
             return headers;
-        },
-        credentials: "include"
+        }
+        //credentials: "include"
     }),
     endpoints: (builder) => ({
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
-            query: () => "/api/previews",
+            query: () => ({
+                url: "/previews",
+                method: "GET"
+            }),
             transformResponse: (response: { data: ArticlePreviewModel[] }) => {
                 response.data = response.data.map(art => ({
                     ...art,
@@ -31,7 +37,7 @@ export const articlesApi = createApi({
             }
         }),
         getArticleById: builder.query<ArticleModel, string>({
-            query: (id) => `/api/article/${id}`,
+            query: (id) => `/article/${id}`,
             transformResponse: (response: { data: ArticleModel }) => {
                 response.data = {
                     ...response.data,
@@ -43,7 +49,7 @@ export const articlesApi = createApi({
         }),
         createArticle: builder.mutation<ArticleModel, ArticleModel>({
             query: (data: ArticleModel) => ({
-                    url: "/api/article",
+                    url: "/article",
                     method: "POST",
                     body: data    
             }),

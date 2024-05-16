@@ -1,7 +1,8 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
     env: {
-        SERVER_URL: "http://localhost:8888",
+        LOCAL_SERVER_URL: "http://localhost:8888",
+        SERVER_URL: "https://dupktl75pk.execute-api.us-east-1.amazonaws.com/dev",
         AUTH0_SECRET: "561684a245ac72e7b18f4ab9b0f08323eb11e3a0efbbea641875781470189ca6",
         AUTH0_BASE_URL: "http://localhost:3000",
         AUTH0_ISSUER_BASE_URL: "https://dev-6bi988f9.us.auth0.com",
