@@ -9,7 +9,11 @@ export default {
             http: {
                 method: "get",
                 path: "/previews",
-                cors: true,
+                cors: {
+                    origin: "*",
+                    headers: ["Content-Type", "Authorization"],
+                    allowCredentials: true
+                },
                 request: {
                     schemas: {
                         "application/json": schema,

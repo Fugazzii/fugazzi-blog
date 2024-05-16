@@ -22,10 +22,23 @@ export const articlesApi = createApi({
         //credentials: "include"
     }),
     endpoints: (builder) => ({
+        usePing: builder.query<ArticlePreviewModel[], string>({
+            query: () => ({
+                url: "/ping",
+                method: "GET",
+                params: {
+                    name: "Ilia"
+                }
+            })
+        }),
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
             query: () => ({
                 url: "/previews",
-                method: "GET"
+                method: "GET",
+                params: {
+                    limit: 5,
+                    page: 1
+                }
             }),
             transformResponse: (response: { data: ArticlePreviewModel[] }) => {
                 response.data = response.data.map(art => ({
@@ -58,4 +71,9 @@ export const articlesApi = createApi({
     })
 });
 
-export const { useGetAllPreviewsQuery, useGetArticleByIdQuery, useCreateArticleMutation } = articlesApi;
+export const { 
+    useGetAllPreviewsQuery,
+    useGetArticleByIdQuery,
+    useCreateArticleMutation,
+    useUsePingQuery
+} = articlesApi;

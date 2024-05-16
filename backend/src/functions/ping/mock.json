@@ -2,5 +2,8 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "body": "{}"
+    "body": "{}",
+    "queryStringParameters": {
+        "name": "Ilia"
+    }
 }
