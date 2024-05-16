@@ -1,5 +1,5 @@
 "use client";
-import { userApi } from "@/store/modules/api/user";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
@@ -68,16 +68,16 @@ type Props = {
 }
 
 const PanelLayout = ({ children }: Props) => {
-    const { data: user } = userApi.endpoints.getUser.useQuery();
     const router = useRouter();
+    const { user } = useUser();
 
     useEffect(() => {
         if (!user) {
             router.push("/admin");
         }
-    }, [user, router]);
+    }, []);
 
-    return (
+    return user && (
         <div className="w-full h-full bg-gray-950 p-4 flex flex-col justify-around items-center">
             <Tabs />
             <div className="w-full h-[70vh] flex flex-col justify-center items-center">

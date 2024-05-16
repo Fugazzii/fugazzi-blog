@@ -3,11 +3,11 @@ import Input from "@/components/Input";
 import MdEditor from "@/components/MarkdownEditor";
 import Textarea from "@/components/Textarea";
 import { useCreateArticleMutation } from "@/store/modules/api/articles";
-import { userApi } from "@/store/modules/api/user";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
 
 const DashboardPage = () => {
-    const { data } = userApi.endpoints.getUser.useQuery();
+    const { user } = useUser();
     const [title, setTitle] = useState<string>("");
     const [content, setContent] = useState<string>("");
     const [description, setDescription] = useState<string>("");
@@ -29,9 +29,9 @@ const DashboardPage = () => {
             readDuration: calculateReadDuration(content.length),
             createdAt: new Date().toString(),
             description,
-            author: data?.nickname ?? "unknown",
+            author: user!.nickname ?? "unknown",
             imgUrl: "https://nakamoto.com/content/images/size/w960/2020/01/introduction-to-cryptocurrency.png",
-            authorProfileImgUrl: data?.picture ?? "404"
+            authorProfileImgUrl: user!.picture ?? "404"
         });
 
         alert("Article posted successfully");
