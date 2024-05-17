@@ -1,4 +1,5 @@
 import { verify } from "jsonwebtoken";
+import { middyfy } from "@libs/lambda";
 
 const generatePolicy = (principalId: string, methodArn: string) => {
     const [arn, region, account, ...rest] = methodArn.split(":");
@@ -19,7 +20,7 @@ const generatePolicy = (principalId: string, methodArn: string) => {
     };
 }
 
-async function auth(event: any, _context: any) {
+async function authHandler(event: any, _context: any) {
     if (!event.authorizationToken) {
         throw "Unauthorized";
     }
@@ -39,4 +40,4 @@ async function auth(event: any, _context: any) {
     }
 }
   
-export default auth;
+export const auth = middyfy(authHandler);

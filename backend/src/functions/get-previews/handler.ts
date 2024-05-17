@@ -29,4 +29,4 @@ const GetPreviews: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (ev
     }
 };
 
-export const main = middyfy(GetPreviews);
+export const get_previews = middyfy(GetPreviews);

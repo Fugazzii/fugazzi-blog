@@ -1,10 +1,10 @@
 //import auth from "@functions/auth";
-import { GetPreviews, DeleteArticle, GetArticleById, PostArticle, Ping } from "@functions/index";
+import { GetPreviews, DeleteArticle, GetArticleById, PostArticle } from "@functions/index";
 
 const serverlessConfiguration = {
     service: "backend",
     frameworkVersion: "3",
-    plugins: ["serverless-esbuild", "serverless-certificate-creator"], //"serverless-plugin-log-retention"
+    plugins: ["serverless-esbuild"], //serverless-plugin-log-retention, serverless-certificate-creator
     provider: {
         name: "aws",
         runtime: "nodejs20.x",
@@ -23,11 +23,23 @@ const serverlessConfiguration = {
     },
     // import the function via paths
     functions: {
+        Auth: {
+            handler: "src/functions/auth/handler.auth",
+            timeout: 30,
+            events: [
+                {
+                    http: {
+                        method: "post",
+                        path: "/auth",
+                        cors: true
+                    }
+                }
+            ]
+        },
         GetPreviews,
         GetArticleById,
         PostArticle,
-        DeleteArticle,
-        Ping
+        DeleteArticle
     },
     package: { individually: true },
     custom: {
