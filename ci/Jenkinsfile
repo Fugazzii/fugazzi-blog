@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        NODEJS_HOME: "/home/ilia/.nvm/versions/node/v20.11.1/bin/node"
-        PATH = "$NODEJS_HOME/bin:$PATH"
-    }
-
     stages {
         stage("Checkout") {
             steps {
@@ -25,14 +20,6 @@ pipeline {
                 sh "npx sls deploy"
             }
         }
-    }
 
-    post {
-        success {
-            echo "Deployment successful!"
-        }
-        failure {
-            echo "Deployment failed!"
-        }
     }
 }

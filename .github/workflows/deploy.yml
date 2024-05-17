@@ -1,0 +1,33 @@
+name: Node.js Deployment Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.11.1'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Deploy with Serverless
+      run: npx sls deploy
+
+    - name: Success Message
+      if: success()
+      run: echo "Deployment successful!"
+
+    - name: Failure Message
+      if: failure()
+      run: echo "Deployment failed!"
