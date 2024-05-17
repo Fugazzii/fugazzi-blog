@@ -18,19 +18,10 @@ export const articlesApi = createApi({
         prepareHeaders: (headers) => {
             headers.set("Content-Type", "application/json");
             return headers;
-        }
+        },
         //credentials: "include"
     }),
     endpoints: (builder) => ({
-        usePing: builder.query<ArticlePreviewModel[], string>({
-            query: () => ({
-                url: "/ping",
-                method: "GET",
-                params: {
-                    name: "Ilia"
-                }
-            })
-        }),
         getAllPreviews: builder.query<ArticlePreviewModel[], string>({
             query: () => ({
                 url: "/previews",
@@ -50,8 +41,15 @@ export const articlesApi = createApi({
             }
         }),
         getArticleById: builder.query<ArticleModel, string>({
-            query: (id) => `/article/${id}`,
+            query: (id) => ({
+                url: `/article`,
+                method: "GET",
+                params: {
+                    id
+                }
+            }),
             transformResponse: (response: { data: ArticleModel }) => {
+                console.log(response.data);
                 response.data = {
                     ...response.data,
                     createdAt: formatDate(response.data.createdAt as string),
@@ -74,6 +72,5 @@ export const articlesApi = createApi({
 export const { 
     useGetAllPreviewsQuery,
     useGetArticleByIdQuery,
-    useCreateArticleMutation,
-    useUsePingQuery
+    useCreateArticleMutation
 } = articlesApi;

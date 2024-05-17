@@ -29,7 +29,7 @@ export default function ArticlePage ({ params: { id } }: Props ) {
                 &nbsp;&nbsp;&middot;&nbsp;&nbsp;
                 {preview.readDuration} min read 
                 &nbsp;&nbsp;&middot;&nbsp;&nbsp;
-                <span className="text-white text-xl">{preview.author}</span>
+                <span className="text-white text-xl">@{preview.author}</span>
             </strong>
             <img src={preview.imgUrl} alt="Not Found" className="scale-[90%]"/>
             <div className="prose prose-invert p-10 max-w-[100%] md:scale-[120%] mb-20 md:mt-10" 

@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import { ArticlePreview } from "@/components/Preview";
-import { useGetAllPreviewsQuery, useUsePingQuery } from "@/store/modules/api/articles";
+import { useGetAllPreviewsQuery } from "@/store/modules/api/articles";
 import Loading from "./loading";
 
 type Props = {
@@ -10,8 +10,7 @@ type Props = {
 
 const Page: FC<Props> = (_: Props) => {
     const { data: previews, error, isLoading } = useGetAllPreviewsQuery("articlesApi");
-    const { data: zd } = useUsePingQuery("articlesApi");
-    console.log(zd);
+
     if(isLoading) {
         return <Loading />;
     }
