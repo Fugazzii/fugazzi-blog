@@ -6,18 +6,20 @@ import { useCreateArticleMutation } from "@/store/modules/api/articles";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
 
-const DashboardPage = () => {
+const DashboardPage = () =>{
     const { user } = useUser();
+    
     const [title, setTitle] = useState<string>("");
     const [content, setContent] = useState<string>("");
     const [description, setDescription] = useState<string>("");
+
+    const [createArticle] = useCreateArticleMutation();
 
     const calculateReadDuration = (contentLength: number) => {
         const wordsPerMinute = 200;
         const minutes = contentLength / wordsPerMinute;
         return Math.ceil(minutes);
     }
-    const [createArticle] = useCreateArticleMutation();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -49,4 +51,4 @@ const DashboardPage = () => {
     );
 }
 
-export default DashboardPage;
+export default DashboardPage;;

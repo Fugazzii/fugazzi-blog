@@ -14,6 +14,9 @@ const MdEditor = ({ label, onChangeFunc }: MdEditorProps) => {
         <div className="mb-6 w-2/3">
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
             <MarkdownEditor id="message"
+                hideToolbar={false}
+                toolbarBottom={true}
+                preview="edit"
                 value={text}
                 onChange={(v) => {
                     setText(v || "");
