@@ -1,7 +1,6 @@
 "use client";
-import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 
 type TabLinkProps = {

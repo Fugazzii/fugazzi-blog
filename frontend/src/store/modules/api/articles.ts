@@ -10,7 +10,6 @@ export const articlesApi = createApi({
         baseUrl: process.env.SERVER_URL,
         prepareHeaders: async (headers) => {
             headers.set("Content-Type", "application/json");
-            
             return headers;
         },
         credentials: "include"
@@ -59,6 +58,15 @@ export const articlesApi = createApi({
                 body: data
             }),
             transformResponse: (response: { data: ArticleModel }) => response.data
+        }),
+        deleteArticle: builder.mutation<void, string>({
+            query: (id: string) => ({
+                url: `/article`,
+                method: "DELETE",
+                params: {
+                    id
+                }
+            })
         })
     })
 });
@@ -66,5 +74,6 @@ export const articlesApi = createApi({
 export const { 
     useGetAllPreviewsQuery,
     useGetArticleByIdQuery,
-    useCreateArticleMutation
+    useCreateArticleMutation,
+    useDeleteArticleMutation
 } = articlesApi;
