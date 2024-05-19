@@ -12,7 +12,7 @@ type ChildrenProps = Readonly<{children: React.ReactNode;}>;
 
 export const metadata: Metadata = {
     title: "Fugazzi Blog",
-    description: "A blog about software development, blockchain and other tech-related topics.",
+    description: "A blog about software development, blockchain and other tech-related topics."
 };
 
 export default function RootLayout({ children }: ChildrenProps) {

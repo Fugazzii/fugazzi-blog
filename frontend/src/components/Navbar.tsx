@@ -19,7 +19,7 @@ export const Navbar = () => {
                 </div>
                 <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/home">Home</Link>
                 <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">About</Link>
-                <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Discord</Link>
+                <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="https://www.linkedin.com/in/ilia-sichinava/">LinkedIn</Link>
                 <Link className="hidden md:block leading-5 m-4 text-xl text-gray-400 font-bold hover:text-white" href="/">Twitter</Link>
             </Fragment>
             <DarkModeSwitch
