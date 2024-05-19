@@ -1,4 +1,5 @@
 import { handlerPath } from "@libs/handler-resolver";
+import { corsConfig } from "src/cors";
 
 export default {
     handler: `${handlerPath(__dirname)}/handler.auth`,
@@ -8,7 +9,7 @@ export default {
             http: {
                 method: "post",
                 path: "/auth",
-                cors: true
+                cors: corsConfig
             }
         }
     ]

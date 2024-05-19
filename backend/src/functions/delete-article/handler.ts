@@ -15,7 +15,7 @@ const DeleteArticle: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
         if (!id) {
             throw new Error("Article ID is missing.");
         }
-        const article = await articleService.getById(id);
+        const article = await articleService.delete(id);
         
         return formatJSONResponse({
             message: "Article deleted successfully",

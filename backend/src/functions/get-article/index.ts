@@ -1,4 +1,5 @@
 import { handlerPath } from "@libs/handler-resolver";
+import { corsConfig } from "src/cors";
 
 export default {
     handler: `${handlerPath(__dirname)}/handler.main`,
@@ -8,7 +9,7 @@ export default {
             http: {
                 method: "get",
                 path: "/article",
-                cors: true
+                cors: corsConfig
             }
         }
     ]

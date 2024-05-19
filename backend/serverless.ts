@@ -1,5 +1,6 @@
 //import auth from "@functions/auth";
 import { GetPreviews, DeleteArticle, GetArticleById, PostArticle } from "@functions/index";
+import { corsConfig } from "src/cors";
 
 const serverlessConfiguration = {
     service: "backend",
@@ -31,7 +32,7 @@ const serverlessConfiguration = {
                     http: {
                         method: "post",
                         path: "/auth",
-                        cors: true
+                        cors: corsConfig
                     }
                 }
             ]
