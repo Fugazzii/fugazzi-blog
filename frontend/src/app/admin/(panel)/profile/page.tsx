@@ -1,16 +1,11 @@
-"use client";
-import { selectSession } from "@/store/modules/slices/session";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import dynamic from "next/dynamic";
-import { useSelector } from "react-redux";
 
 const ProfileTab = () => {
     const { user } = useUser();
     const AuthButton = dynamic(() => import("@/components/AuthButton"), {
         ssr: false
     });
-
-    const session = useSelector(selectSession);
     
     return user && (
         <>

@@ -1,5 +1,3 @@
-"use client";
-
 type InputProps = {
     label: string;
     placeholder: string;

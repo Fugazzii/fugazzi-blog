@@ -1,5 +1,3 @@
-"use client";
-
 type TextareaProps = {
     label: string;
     placeholder: string;
