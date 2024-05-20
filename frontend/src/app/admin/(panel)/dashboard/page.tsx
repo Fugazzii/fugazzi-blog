@@ -40,8 +40,7 @@ const DashboardPage = () =>{
     }
 
     return (
-        <form onSubmit={handleSubmit} 
-            className="w-full h-full flex flex-col justify-center items-center">
+        <form onSubmit={handleSubmit} className="w-full h-full flex flex-col justify-center items-center">
             <strong className="text-white text-3xl">Upload an Article</strong>
             <Input label="Title" placeholder="Enter title" onChangeFunc={e => setTitle(e.target.value)} />
             <Textarea label="Description" placeholder="Add small description" onChangeFunc={e => setDescription(e.target.value)}/>

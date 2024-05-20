@@ -11,13 +11,13 @@ type Props = {
 }
 
 export default function ArticlePage({ params: { id } }: Props ) {
-    const { isLoading, data: preview } = useGetArticleByIdQuery(id);
+    const { isLoading, data: preview, isFetching, isError } = useGetArticleByIdQuery(id);
 
-    if(isLoading) {
-        <Loading />;
+    if(isLoading || isFetching || !preview) {
+        return <Loading />;
     }
 
-    if(!preview) {
+    if(isError) {
         return <>Article Not found</>;
     }
 

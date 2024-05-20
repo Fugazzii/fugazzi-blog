@@ -42,7 +42,6 @@ export const articlesApi = createApi({
                 }
             }),
             transformResponse: (response: { data: ArticleModel }) => {
-                console.log(response.data);
                 response.data = {
                     ...response.data,
                     createdAt: formatDate(response.data.createdAt as string),

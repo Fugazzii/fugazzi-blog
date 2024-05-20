@@ -1,11 +1,12 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import dynamic from "next/dynamic";
+import Loading from "../loading";
 
 const ProfileTab = async () => {
     const { user } = await getSession() ?? {};
 
     const AuthButton = dynamic(() => import("@/components/AuthButton"), {
-        ssr: false
+        ssr: true
     });
     
     return user && (

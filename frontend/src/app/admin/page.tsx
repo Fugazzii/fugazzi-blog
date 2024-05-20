@@ -1,14 +1,12 @@
 import dynamic from "next/dynamic";
-import Loading from "./loading";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import ClientSessionHandler from "@/components/ClientHandler";
 
-export default withPageAuthRequired(async function AdminPage() {
+const AdminPage = async () => {
     const session = await getSession() ?? {};
     
     const AuthButton = dynamic(() => import("@/components/AuthButton"), {
-        ssr: true,
-        loading: () => <Loading />
+        ssr: true
     });
 
     return !session ? (
@@ -17,4 +15,6 @@ export default withPageAuthRequired(async function AdminPage() {
             <AuthButton variant="login" />
         </div>
     ) : <ClientSessionHandler session={JSON.parse(JSON.stringify(session))} />;
-}, { returnTo: "/admin/profile" });
+}
+
+export default withPageAuthRequired(AdminPage, { returnTo: "/admin/profile" });
