@@ -1,8 +1,8 @@
 "use client";
+import { toggleThemeMode } from "@/lib/modules/slices/theme-mode";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { toggleThemeMode } from "../store/modules/slices/theme-mode";
 import { Fragment } from "react/jsx-runtime";
 
 export const Navbar = () => {

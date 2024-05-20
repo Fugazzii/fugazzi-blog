@@ -1,5 +1,4 @@
 import Tabs from "@/components/Tabs";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 
 type Props = {
     readonly children: React.ReactNode;
@@ -16,4 +15,4 @@ const PanelLayout = ({ children }: Props) => {
     );
 }
 
-export default withPageAuthRequired(PanelLayout);
+export default PanelLayout;

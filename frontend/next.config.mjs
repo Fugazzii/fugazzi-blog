@@ -9,6 +9,15 @@ const nextConfig = {
         AUTH0_CLIENT_ID: "VihID3upBOkQIpuNqmWqmpTfjRwYSyB8",
         AUTH0_CLIENT_SECRET: "bdcxh-1Y1Yzk0orhmb7C8hYEOjAjSy2qIq1T77HS6GYUI1xteemMM7KKdA7DXJnw",
         ADMIN_EMAIL: "sichinavailia@gmail.com"
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "nakamoto.com",
+                port: "",
+            }
+        ]
     }
 };
 

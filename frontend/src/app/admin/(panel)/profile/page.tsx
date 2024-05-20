@@ -1,8 +1,9 @@
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { getSession } from "@auth0/nextjs-auth0";
 import dynamic from "next/dynamic";
 
-const ProfileTab = () => {
-    const { user } = useUser();
+const ProfileTab = async () => {
+    const { user } = await getSession() ?? {};
+
     const AuthButton = dynamic(() => import("@/components/AuthButton"), {
         ssr: false
     });

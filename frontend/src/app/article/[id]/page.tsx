@@ -1,6 +1,6 @@
 "use client";
 import Loading from "@/app/home/loading";
-import { useGetArticleByIdQuery } from "@/store/modules/api/articles";
+import { useGetArticleByIdQuery } from "@/lib/modules/api/articles";
 import md from "markdown-it";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
     searchParams: object
 }
 
-export default function ArticlePage ({ params: { id } }: Props ) {
+export default function ArticlePage({ params: { id } }: Props ) {
     const { isLoading, data: preview } = useGetArticleByIdQuery(id);
 
     if(isLoading) {

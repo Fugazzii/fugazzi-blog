@@ -2,8 +2,8 @@
 import Input from "@/components/Input";
 import MdEditor from "@/components/MarkdownEditor";
 import Textarea from "@/components/Textarea";
-import { useCreateArticleMutation } from "@/store/modules/api/articles";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useCreateArticleMutation } from "@/lib/modules/api/articles";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
 
 const DashboardPage = () =>{
@@ -51,4 +51,4 @@ const DashboardPage = () =>{
     );
 }
 
-export default DashboardPage;;
+export default withPageAuthRequired(DashboardPage);

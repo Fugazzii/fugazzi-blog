@@ -1,4 +1,4 @@
-import { RootState } from "@/store/store-provider";
+import { RootState } from "@/lib/store/store-provider";
 import { Session, getSession } from "@auth0/nextjs-auth0";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 

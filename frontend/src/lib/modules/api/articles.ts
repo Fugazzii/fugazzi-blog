@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ArticlePreviewModel } from "../../../models/preview";
+import { ArticlePreviewModel } from "../../../../models/preview";
 import { ArticleModel } from "@/models/article";
 
 const formatDate = (date: string) => new Date(date).toLocaleDateString().replaceAll("/", "-");

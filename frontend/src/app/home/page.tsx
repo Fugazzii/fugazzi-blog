@@ -1,8 +1,8 @@
 "use client";
 import { FC } from "react";
-import { useGetAllPreviewsQuery } from "@/store/modules/api/articles";
 import Loading from "./loading";
 import dynamic from "next/dynamic";
+import { useDeleteArticleMutation, useGetAllPreviewsQuery } from "@/lib/modules/api/articles";
 
 type Props = {
     id?: number
@@ -10,6 +10,7 @@ type Props = {
 
 const Page: FC<Props> = (_: Props) => {
     const { data: previews, error, isLoading } = useGetAllPreviewsQuery("articlesApi");
+    const [deleteArticle] = useDeleteArticleMutation();
 
     if(isLoading) {
         return <Loading />;
@@ -28,8 +29,8 @@ const Page: FC<Props> = (_: Props) => {
         <div className="w-full flex flex-col justify-center items-center">
             {error && <p>Error</p>}
             {previews && previews.map((preview, idx) => (
-                <div key={idx} className="w-full flex flex-col justify-around items-center m-16">
-                    <ArticlePreview {...preview} />
+                <div key={idx} className="w-full h-full flex flex-col justify-around items-center m-16">
+                    <ArticlePreview {...{ deleteArticle, ...preview }} />
                 </div>
             ))}
         </div>            

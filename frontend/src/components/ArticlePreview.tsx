@@ -1,22 +1,23 @@
 "use client";
-import { FC, MouseEventHandler } from "react";
+import { FC } from "react";
 import { ArticlePreviewModel } from "../models/preview";
 import Link from "next/link";
-import { useDeleteArticleMutation } from "@/store/modules/api/articles";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
 
-type Props = ArticlePreviewModel;
+type Props = ArticlePreviewModel & {
+    deleteArticle: (id: string) => Promise<void>;
+};
 
 const ArticlePreview: FC<Props> = (props: Props) => {
     const { user } = useUser();
-    const [deleteArticle] = useDeleteArticleMutation();
     const handleDelete = async (e: any) => {
         e.preventDefault();
         try {
             if(!props.id) {
                 throw new Error("Invalid ID");
             }
-            await deleteArticle(props.id);
+            await props.deleteArticle(props.id);
             alert("Successfully deleted");            
         } catch (error) {
             console.error(error);
@@ -26,7 +27,9 @@ const ArticlePreview: FC<Props> = (props: Props) => {
 
     return (
         <>
-            <img className="w-4/5" src={props.imgUrl} alt="..." />
+            <div className="w-4/5 h-[25vh] md:h-[50vh]">
+                <Image className="object-cover" src={props.imgUrl} alt="..." layout="fill" />
+            </div>
             <div className="w-2/3">
                 <h3 className="text-white font-bold text-3xl mt-6 mb-2">{props.title}</h3>
                 <p className="flex flex-row text-white mb-4">
