@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Session } from "@auth0/nextjs-auth0";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/hooks";
-import { setSession } from "@/lib/modules/slices/session";
+import { setSession } from "@/lib/slices/session";
 
 function ClientSessionHandler({ session }: { session: Session | object }) {
     const dispatch = useAppDispatch();

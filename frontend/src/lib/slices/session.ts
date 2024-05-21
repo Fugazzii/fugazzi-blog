@@ -1,6 +1,6 @@
-import { RootState } from "@/lib/store/store-provider";
-import { Session, getSession } from "@auth0/nextjs-auth0";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { Session } from "@auth0/nextjs-auth0";
+import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 type SessionState = { 
     session: Session | null | undefined

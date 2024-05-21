@@ -1,6 +1,6 @@
 "use client";
 import Loading from "@/app/home/loading";
-import { useGetArticleByIdQuery } from "@/lib/modules/api/articles";
+import { useGetArticleByIdQuery } from "@/lib/api/articles";
 import md from "markdown-it";
 
 type Props = {

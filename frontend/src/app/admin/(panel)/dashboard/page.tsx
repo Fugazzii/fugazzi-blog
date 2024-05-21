@@ -2,7 +2,7 @@
 import Input from "@/components/Input";
 import MdEditor from "@/components/MarkdownEditor";
 import Textarea from "@/components/Textarea";
-import { useCreateArticleMutation } from "@/lib/modules/api/articles";
+import { useCreateArticleMutation } from "@/lib/api/articles";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
 

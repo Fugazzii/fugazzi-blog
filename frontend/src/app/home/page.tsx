@@ -2,7 +2,7 @@
 import { FC } from "react";
 import Loading from "./loading";
 import dynamic from "next/dynamic";
-import { useDeleteArticleMutation, useGetAllPreviewsQuery } from "@/lib/modules/api/articles";
+import { useDeleteArticleMutation, useGetAllPreviewsQuery } from "@/lib/api/articles";
 
 type Props = {
     id?: number

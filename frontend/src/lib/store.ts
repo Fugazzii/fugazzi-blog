@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { articlesApi } from "./modules/api/articles";
-import { sessionReducer } from "./modules/slices/session";
-import { themeModeReducer } from "./modules/slices/theme-mode";
+import { articlesApi } from "./api/articles";
+import { sessionReducer } from "./slices/session";
+import { themeModeReducer } from "./slices/theme-mode";
 import { thunk } from "redux-thunk";
 
 export const makeStore = () => configureStore({
