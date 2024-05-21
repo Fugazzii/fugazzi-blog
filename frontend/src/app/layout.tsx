@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { StoreProvider } from "./StoreProvider";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/containers/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 

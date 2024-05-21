@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 type ThemeModeState = { 
     isDarkMode: boolean
@@ -20,3 +21,4 @@ const themeModeSlice = createSlice({
 
 export const { toggleThemeMode } = themeModeSlice.actions;
 export const themeModeReducer = themeModeSlice.reducer;
+export const selectSession = (state: RootState) => state.session.session;

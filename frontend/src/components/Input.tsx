@@ -1,10 +1,11 @@
 type InputProps = {
+    value: string;
     label: string;
     placeholder: string;
-    onChangeFunc: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ label, placeholder, onChangeFunc }: InputProps) => {
+const Input = ({ label, placeholder, onChange, value }: InputProps) => {
     return (
         <div className="mb-6 w-2/3">
             <label htmlFor="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
@@ -14,7 +15,8 @@ const Input = ({ label, placeholder, onChangeFunc }: InputProps) => {
                     p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
                     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                 placeholder={placeholder}
-                onChange={onChangeFunc}
+                onChange={onChange}
+                value={value}
             />
         </div>
     );

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/hooks";
 import { setSession } from "@/lib/slices/session";
 
-function ClientSessionHandler({ session }: { session: Session | object }) {
+const ClientSessionHandler = ({ session }: { session: Session | object }) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     useEffect(() => {

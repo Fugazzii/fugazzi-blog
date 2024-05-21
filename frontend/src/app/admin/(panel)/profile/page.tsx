@@ -1,6 +1,5 @@
-import { getSession } from "@auth0/nextjs-auth0";
+import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import dynamic from "next/dynamic";
-import Loading from "../loading";
 
 const ProfileTab = async () => {
     const { user } = await getSession() ?? {};
@@ -9,7 +8,7 @@ const ProfileTab = async () => {
         ssr: true
     });
     
-    return user && (
+    return user ? (
         <>
             <div className="text-center my-4">
                 <img className="h-32 w-32 rounded-full border-4 border-white mx-auto my-4"
@@ -32,7 +31,7 @@ const ProfileTab = async () => {
                 <AuthButton variant="logout" user={user} />
             </div>
         </>
-    );
+    ) : <></>;
 }
 
-export default ProfileTab;
+export default withPageAuthRequired(ProfileTab, { returnTo: "/home" });

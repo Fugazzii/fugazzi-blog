@@ -1,13 +1,13 @@
 "use client";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { toggleThemeMode } from "@/lib/slices/theme-mode";
 import Link from "next/link";
-import { useSelector, useDispatch } from "react-redux";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { Fragment } from "react/jsx-runtime";
 
 const Navbar = () => {
-    const dispatch = useDispatch();
-    const isDarkMode = useSelector((state: any) => state.themeMode.isDarkMode);
+    const dispatch = useAppDispatch();
+    const isDarkMode = useAppSelector(state => state.themeMode.isDarkMode);
     const handleDarkModeToggle = () => dispatch(toggleThemeMode());
 
     return (
